@@ -35,8 +35,8 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="region" class="form-label">*Region</label>
-                    <input type="hidden" name="region"/>
-                    <select class="form-control" id="region" value="{{ old('region') }}" required>
+                    <input type="hidden" id="old_region" name="region"/>
+                    <select class="form-control" id="region" required onchange="changeRegionValue()">
                         <option value="" disabled selected>Select Region</option>
                     </select>
                 </div>

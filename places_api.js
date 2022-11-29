@@ -11,6 +11,9 @@ $(function(){
       //SAVE it to the HIDDEN input
       $('input[name=region]').val(selected_region).text();
 
+        //SET it to the LOCALSTORAGE
+        localStorage.setItem('old_region', selected_region)
+
       //SEND [Region] CODE as parameter
       var region_code = $(this).val();
 
@@ -49,16 +52,22 @@ $(function(){
           url: 'https://psgc.gitlab.io/api/regions',
           success: function(data) {
 
-              //PARSING for foreach loop
-              data = JSON.parse(data);
+            //PARSING for foreach loop
+            data = JSON.parse(data);
 
-              //SORT data
-              data.sort(function(a,b){ return a.name.localeCompare(b.name); });
+            //SORT data
+            data.sort(function(a,b){ return a.name.localeCompare(b.name); });
 
-              //LOOP to display in dropdown
-              data.forEach(element => {
-                  $('#region').append('<option value="'+element.code+'">'+element.name+'</option>');
-              });
+            //GET data stored from the LOCALSTORAGE
+            var old_region_value = localStorage.getItem('old_region')  //----------------------------NEW
+            if (old_region_value != null) {
+                $('#region').append('<option value="'+old_region_value+'" Selected Disabled>'+old_region_value+'</option>');   
+            }
+
+            //LOOP to display in dropdown
+            data.forEach(element => {
+                $('#region').append('<option value="'+element.code+'">'+element.name+'</option>');
+            });
 
           },
       })
