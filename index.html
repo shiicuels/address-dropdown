@@ -12,6 +12,13 @@
 
 <body class="container">
 
+    <br/>
+    <p><b>Shiela's Note</b></p>
+    <p>1. The dropdown addresses' old values will only show once address line 1 has value in it.</p>
+    <p>2. Okay lang kahit di mo na i-add to. In case lang na gusto nila nassave pa yung old input, at lease we have this na</p>
+    <br/><hr/>
+
+    <h1>Addess Dropdown Form: Register/Add</h1>
     <form class="form-address">
 
         <!-- Address Line 1 -->
@@ -35,9 +42,12 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="region" class="form-label">*Region</label>
-                    <input type="hidden" id="old_region" name="region"/>
-                    <select class="form-control" id="region" required onchange="changeRegionValue()">
-                        <option value="" disabled selected>Select Region</option>
+                    <input type="hidden" id="region_hidden" name="region"/>
+
+                    <!-- I removed the values temporarily -->
+                    <!-- value="{{ old('province') }}" -->
+
+                    <select class="form-control" id="region" required>
                     </select>
                 </div>
             </div>
@@ -46,9 +56,8 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="province" class="form-label">*Province</label>
-                    <input type="hidden" name="province"/>
-                    <select class="form-control" id="province" value="{{ old('province') }}" required>
-                        <option value="" disabled selected>Select Province</option>
+                    <input type="hidden" id="province_hidden" name="province"/>
+                    <select class="form-control" id="province" required>
                     </select>
                 </div>
             </div>
@@ -59,9 +68,8 @@
             <div class="col-md-5">
                 <div class="form-group">
                     <label for="city" class="form-label">*City</label>
-                    <input type="hidden" name="city"/>
-                    <select class="form-control" id="city" value="{{ old('city') }}" required>
-                        <option value="" disabled selected>Select City</option>
+                    <input type="hidden" id="city_hidden" name="city"/>
+                    <select class="form-control" id="city" required>
                     </select>
                 </div>
             </div>
@@ -70,9 +78,8 @@
             <div class="col-md-5">
                 <div class="form-group">
                     <label for="barangay" class="form-label">*Barangay</label>
-                    <input type="hidden" name="barangay"/>
-                    <select class="form-control" id="barangay" value="{{ old('barangay') }}" required>
-                        <option value="" disabled selected>Select Barangay</option>
+                    <input type="hidden" id="barangay_hidden" name="barangay"/>
+                    <select class="form-control" id="barangay" required>
                     </select>
                 </div>
             </div>
